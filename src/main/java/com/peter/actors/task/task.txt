@@ -1,0 +1,28 @@
+1. Create FSM actor as a tank "computer", name it ComputerFSM
+
+2. This FSM must have 3 states:
+   "INACTIVE",
+   "ON_DUTY" ,
+   "HIT";
+
+    - by default it is in "INACTIVE" state.
+
+3. Tank, while starting must send message "StartComputer" and ComputerFSM must enter state "ON_DUTY"
+
+4. Each report from shell, that tank receives, the tank sends to ComputerFSM as "Strike" message
+
+5. After 3 Strikes in state "ON_DUTY" ComputerFSM must enter state "HIT" and send message to tank "StopTank"
+
+6. Tank must stop
+
+7. After 5 seconds in state "HIT", ComputerFSM must enter "INACTIVE" state
+
+
+
+Notes:
+
+   - for StartComputer, Strike and StopTank messages use enum ComputerMessages
+   - all your states (INACTIVE, ON_DUTY, HIT) must be parts of enum State
+   - all your state data must implement interface Data(Marker interface that you create)
+
+
