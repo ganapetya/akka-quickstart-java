@@ -11,7 +11,7 @@ public class TankActor extends AbstractActor {
     private int distance;
     private int step;
     private int maxDistance;
-    private int shell;
+    private int shotShellsCounter;//shot shells counter
     private int arrivedShellsCounter;
     private boolean computerInterrupt;
 
@@ -47,7 +47,7 @@ public class TankActor extends AbstractActor {
                             distance = distance + step;
                             if (distance % 10 == 0) {
                                 System.out.println("Tank " + self() + " shoots!");
-                                final ActorRef shellActor = context().actorOf(ShellActor.props(distance), "shell-" + (++shell));
+                                final ActorRef shellActor = context().actorOf(ShellActor.props(distance), "shell-" + (++shotShellsCounter));
                                 shellActor.tell("shoot", self());
                             }
                             if ((distance < maxDistance) && !computerInterrupt) {
@@ -61,7 +61,7 @@ public class TankActor extends AbstractActor {
                         command -> command.equals("shell_arrived"),
                         command -> {
                             arrivedShellsCounter++;
-                            System.out.println("Arrived shell number " + arrivedShellsCounter + " with id " + sender());
+                            System.out.println("Arrived shotShellsCounter number " + arrivedShellsCounter + " with id " + sender());
                             computerFsm.tell(ComputerMessages.Strike, self());
                         }
                 ).match(
