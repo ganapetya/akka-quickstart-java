@@ -7,7 +7,7 @@ public class Shell implements Runnable{
     private int tankId;
     private int shellId;
     private Tank tank;
-    volatile boolean stopped = false;
+    volatile boolean stopped = false;//?
 
 
 
