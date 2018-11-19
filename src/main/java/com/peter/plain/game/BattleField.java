@@ -17,7 +17,7 @@ public class BattleField {
 
     public static ExecutorService theExecutor = Executors.newFixedThreadPool(10);
 
-    private static int maxTanks = 10;
+    private static int maxTanks = 10;//?? how it later plays
 
     public static void main(String[] args) {
 
