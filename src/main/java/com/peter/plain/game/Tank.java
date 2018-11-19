@@ -7,8 +7,8 @@ public class Tank implements Runnable {
     private int step;
     private int macDistance;
     private int id;
-    private volatile AtomicInteger arrivedCounter = new AtomicInteger();
-    volatile boolean stopped = false;
+    private volatile AtomicInteger arrivedCounter = new AtomicInteger();//?
+    volatile boolean stopped = false;//?
 
 
     public Tank(int id) {
